@@ -1,14 +1,14 @@
 import React from 'react';
-import { Wrapper, Logo, LoginBtn, SignUpBtn } from './styles';
+import { Wrapper, Logo, LoginLink, SignUpLink, LinkWrapper } from './styles';
 
 export default function Header(): JSX.Element {
   return (
     <Wrapper>
-      <Logo>My Logo</Logo>
-      <div>
-        <LoginBtn>Log In</LoginBtn>
-        <SignUpBtn>Sign Up</SignUpBtn>
-      </div>
+      <Logo href="/">My Logo</Logo>
+      <LinkWrapper>
+        <LoginLink href="signin">Log In</LoginLink>
+        <SignUpLink href="signup">Sign Up</SignUpLink>
+      </LinkWrapper>
     </Wrapper>
   );
 }

@@ -12,13 +12,28 @@ export const Wrapper = styled.header`
 	position: absolute;	
 `
 
-export const Logo = styled.span`
+export const Logo = styled.a`
   font-size: 28px;
   font-weight; 400;
   color: #fff;
+  text-decoration: none;
+  transition: color 200ms ease;
+  
+  &:hover,
+  focus {
+    background: rgba(0,0,0,0);
+	  color: #3a7999;
+	  color: inset 0 0 0 3px #3a7999;
 `
 
-export const LoginBtn = styled.button`
+export const LinkWrapper = styled.div`
+  display: flex;
+`
+
+export const LoginLink = styled.a`
+  text-decoration: none;
+  padding: 13px 0;
+  text-align: center;
   width: 160px;
   height: 44px;
   font-weight: 700;
@@ -37,7 +52,10 @@ export const LoginBtn = styled.button`
 	  box-shadow: inset 0 0 0 3px #3a7999;
   }
 `
-export const SignUpBtn = styled.button`
+export const SignUpLink = styled.a`
+  text-decoration: none;
+  padding: 13px 0;
+  text-align: center;
   width: 160px;
   height: 44px;
   font-weight: 700;
