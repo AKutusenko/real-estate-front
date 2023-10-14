@@ -9,11 +9,10 @@ import {
   SubmitBtn,
   LinkWrapper,
   Text,
+  ForgotLink,
 } from './styles';
 
 export default function Form(): JSX.Element {
-  const [firstName, setFirstName] = useState<string>('');
-  const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -21,12 +20,6 @@ export default function Form(): JSX.Element {
     const { name, value } = e.currentTarget;
 
     switch (name) {
-      case 'firstName':
-        setFirstName(value);
-        break;
-      case 'lastName':
-        setLastName(value);
-        break;
       case 'email':
         setEmail(value);
         break;
@@ -41,9 +34,7 @@ export default function Form(): JSX.Element {
 
   const handleSubmit = (e: React.FormEvent<EventTarget>): void => {
     e.preventDefault();
-    console.log(firstName, lastName, email, password);
-    setFirstName('');
-    setLastName('');
+    console.log(email, password);
     setEmail('');
     setPassword('');
   };
@@ -51,27 +42,7 @@ export default function Form(): JSX.Element {
   return (
     <Wrapper>
       <FormItem onSubmit={handleSubmit}>
-        <Title>Register</Title>
-        <Label>First Name</Label>
-        <Input
-          type="text"
-          name="firstName"
-          placeholder="First name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          required
-          onChange={handleChange}
-          value={firstName}
-        />
-        <Label>Last Name</Label>
-        <Input
-          type="text"
-          name="lastName"
-          placeholder="Last name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          required
-          onChange={handleChange}
-          value={lastName}
-        />
+        <Title>Login</Title>
         <Label>Email</Label>
         <Input
           type="email"
@@ -92,10 +63,11 @@ export default function Form(): JSX.Element {
           onChange={handleChange}
           value={password}
         />
-        <SubmitBtn type="submit">Sign Up</SubmitBtn>
+        <ForgotLink href="/passwordrecovery">Forgot password?</ForgotLink>
+        <SubmitBtn type="submit">Sign In</SubmitBtn>
         <LinkWrapper>
-          <Text>Already have Account?</Text>
-          <Link href="/signin">Sign In</Link>
+          <Text>Don&apos;t have account?</Text>
+          <Link href="/signup">Sign Up</Link>
         </LinkWrapper>
       </FormItem>
     </Wrapper>
