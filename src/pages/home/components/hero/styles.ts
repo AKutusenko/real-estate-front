@@ -2,9 +2,6 @@ import styled from 'styled-components';
 import backgroundImg from './imgs/1.jpeg';
 
 export const Wrapper = styled.section`
-`
-
-export const Hero = styled.section`
 	background: url(${backgroundImg});
 	height: 1024px;
 	width: 100%;
@@ -48,10 +45,10 @@ export const HeroBtn = styled.button`
 	cursor: pointer;
 	transition: box-shadow 200ms ease;
   
-  &:hover,
-  focus {
-    background: rgba(0,0,0,0);
-	  color: #3a7999;
-	  box-shadow: inset 0 0 0 3px #3a7999;
-  }
+    &:hover,
+     focus {
+      background: rgba(0,0,0,0);
+	    color: #3a7999;
+	    box-shadow: inset 0 0 0 3px #3a7999;
+     }
 `

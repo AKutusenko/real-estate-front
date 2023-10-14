@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.header`
   height: 80px;
-  width:1440px;
+  width: 100%;
   background: #172234;
   font-family: Merriweather;
   display: flex;
