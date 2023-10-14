@@ -94,7 +94,7 @@ export default function Form(): JSX.Element {
         />
         <SubmitBtn type="submit">Sign Up</SubmitBtn>
         <LinkWrapper>
-          <Text>Already have Account?</Text>
+          <Text>Already have account?</Text>
           <Link href="/signin">Sign In</Link>
         </LinkWrapper>
       </FormItem>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import backgroundImg from './imgs/1.jpeg';
+import backgroundImg from './images/1.jpeg';
 
 export const Wrapper = styled.section`
 	background: url(${backgroundImg});
