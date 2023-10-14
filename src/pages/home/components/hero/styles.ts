@@ -5,7 +5,7 @@ export const Wrapper = styled.section`
 	background: url(${backgroundImg});
 	height: 1024px;
 	width: 100%;
-  background-blend-mode: multiply;
+  	background-blend-mode: multiply;
 	background-color: rgba(23,38,52,.7);
 	display: flex;
 	flex-direction: column;
