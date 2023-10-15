@@ -65,7 +65,6 @@ export default function Form(): JSX.Element {
           type="text"
           name="firstName"
           placeholder="First name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           required
           onChange={handleChange}
           value={firstName}
@@ -75,7 +74,6 @@ export default function Form(): JSX.Element {
           type="text"
           name="lastName"
           placeholder="Last name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           required
           onChange={handleChange}
           value={lastName}
@@ -85,7 +83,6 @@ export default function Form(): JSX.Element {
           type="email"
           name="email"
           placeholder="Email"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
           onChange={handleChange}
           value={email}
@@ -95,10 +92,10 @@ export default function Form(): JSX.Element {
           type="password"
           name="password"
           placeholder="Password"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
           onChange={handleChange}
           value={password}
+          autoComplete="username"
         />
         <SubmitBtn type="submit">Sign Up</SubmitBtn>
         <LinkWrapper>

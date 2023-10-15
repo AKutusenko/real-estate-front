@@ -56,7 +56,6 @@ export default function Form(): JSX.Element {
           type="email"
           name="email"
           placeholder="Email"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
           onChange={handleChange}
           value={email}
@@ -66,10 +65,10 @@ export default function Form(): JSX.Element {
           type="password"
           name="password"
           placeholder="Password"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
           onChange={handleChange}
           value={password}
+          autoComplete="username"
         />
         <ForgotLink href="/passwordrecovery">Forgot password?</ForgotLink>
         <SubmitBtn type="submit">Sign In</SubmitBtn>
