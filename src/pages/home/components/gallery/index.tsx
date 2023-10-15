@@ -5,7 +5,6 @@ import { CardTypes } from './components/card/types';
 import { useGetCardsQuery } from 'store/api/cardsApi';
 
 export default function Gallery(): JSX.Element {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dataBackup = [
     {
       id: 1,

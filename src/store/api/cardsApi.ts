@@ -6,7 +6,7 @@ export const cardsApi = createApi({
     endpoints: (builder) => ({
         getCards: builder.query({
             query: () => ({
-                url: '/cards',
+                url: '/api/cards',
                 method: 'GET',
             }),
         }),

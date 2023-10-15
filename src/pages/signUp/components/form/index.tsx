@@ -10,12 +10,16 @@ import {
   LinkWrapper,
   Text,
 } from './styles';
+import { useSignUpMutation } from 'store/api/authApi';
 
 export default function Form(): JSX.Element {
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [signUp, { data, isLoading, isSuccess, isError, error }] =
+    useSignUpMutation();
 
   const handleChange = (e: any) => {
     const { name, value } = e.currentTarget;
@@ -39,9 +43,13 @@ export default function Form(): JSX.Element {
     }
   };
 
+  async function sendUserData() {
+    await signUp({ firstName, lastName, email, password });
+  }
+
   const handleSubmit = (e: React.FormEvent<EventTarget>): void => {
     e.preventDefault();
-    console.log(firstName, lastName, email, password);
+    sendUserData();
     setFirstName('');
     setLastName('');
     setEmail('');

@@ -11,10 +11,14 @@ import {
   Text,
   ForgotLink,
 } from './styles';
+import { useSignInMutation } from 'store/api/authApi';
 
 export default function Form(): JSX.Element {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [signIn, { data, isLoading, isSuccess, isError, error }] =
+    useSignInMutation();
 
   const handleChange = (e: any) => {
     const { name, value } = e.currentTarget;
@@ -32,9 +36,13 @@ export default function Form(): JSX.Element {
     }
   };
 
+  async function sendUserData() {
+    await signIn({ email, password });
+  }
+
   const handleSubmit = (e: React.FormEvent<EventTarget>): void => {
     e.preventDefault();
-    console.log(email, password);
+    sendUserData();
     setEmail('');
     setPassword('');
   };
