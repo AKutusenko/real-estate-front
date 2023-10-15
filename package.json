@@ -30,7 +30,8 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "start:prod": "node dist/main.js"
   },
   "eslintConfig": {
     "extends": [
