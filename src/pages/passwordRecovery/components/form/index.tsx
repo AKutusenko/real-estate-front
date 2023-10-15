@@ -10,9 +10,11 @@ import {
   LinkWrapper,
   Text,
 } from './styles';
+import { useSendEmailMutation } from 'store/api/forgotPassword';
 
 export default function Form(): JSX.Element {
   const [email, setEmail] = useState<string>('');
+  const [sendEmail] = useSendEmailMutation();
 
   const handleChange = (e: any) => {
     const { name, value } = e.currentTarget;
@@ -27,9 +29,13 @@ export default function Form(): JSX.Element {
     }
   };
 
+  async function sendUserData() {
+    sendEmail({ email });
+  }
+
   const handleSubmit = (e: React.FormEvent<EventTarget>): void => {
     e.preventDefault();
-    console.log(email);
+    sendUserData();
     setEmail('');
   };
 
