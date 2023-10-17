@@ -1,5 +1,4 @@
 import { instance } from "api/axios.api";
-import { ICard } from "types";
 
 export const CardService = {
   async getAll() {

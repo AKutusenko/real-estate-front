@@ -35,3 +35,7 @@ export interface ICard {
     createdAt: string,
     updatedAt: string,
 }
+
+export interface IpasswordRecoeryData {
+    email: string;
+}

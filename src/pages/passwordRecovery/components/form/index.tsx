@@ -10,12 +10,16 @@ import {
   LinkWrapper,
   Text,
 } from './styles';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
+import { PasswordRecoveryService } from 'services/passwordRecoveryService';
 
 export default function Form(): JSX.Element {
   const [email, setEmail] = useState<string>('');
+  const navigate = useNavigate();
+
   const handleChange = (e: any) => {
     const { name, value } = e.currentTarget;
-
     switch (name) {
       case 'email':
         setEmail(value);
@@ -26,9 +30,19 @@ export default function Form(): JSX.Element {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<EventTarget>): void => {
-    e.preventDefault();
-    setEmail('');
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
+      const data = await PasswordRecoveryService.recovery({
+        email,
+      });
+      setEmail('');
+      if (data) toast.success('Check your mail!');
+      navigate('/');
+    } catch (err: any) {
+      const error = err.response?.data.message;
+      toast.error(error.toString());
+    }
   };
 
   return (
