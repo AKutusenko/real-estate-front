@@ -43,7 +43,7 @@ export const HeroBtn = styled.button`
 	border: 1px solid #fff;
 	border-radius: 5px;
 	cursor: pointer;
-	transition: box-shadow 200ms ease;
+	transition: all 200ms ease;
   
     &:hover,
      focus {

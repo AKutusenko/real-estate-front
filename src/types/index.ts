@@ -1,7 +1,9 @@
 export interface IUser {
-    id: number;
-    email: string;
+    id?: number;
+    email?: string;
     token: string;
+    statusCode?: string | undefined,
+    message?: string | undefined,
 }
 
 export interface ISignUpUserData {
@@ -18,7 +20,7 @@ export interface ISignInUserData {
 export interface IResponseUserData {
     statusCode: string | undefined,
     message: string | undefined,
-    token: string | undefined,
+    token: string,
 }
 
 export interface ICard {

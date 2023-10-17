@@ -8,6 +8,7 @@ import { useAppDispatch } from 'store/hooks';
 import { getTokenFromLocalStorage } from 'helpers/localstorage.helper';
 import { AuthService } from 'services/auth.service';
 import { signOut, signIn } from 'store/user/userSlice';
+import NotFound from 'pages/404';
 
 export default function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ export default function App(): JSX.Element {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/passwordrecovery" element={<PasswordRecovery />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	width: 550px;
-	margin-top: 75px;
+	margin-top: 255px;
 `
 
 export const FormItem = styled.form`
@@ -50,7 +50,7 @@ export const SubmitBtn = styled.button`
 	height: 44px;
 	border: none;
   cursor: pointer;
-  transition: box-shadow 200ms ease;
+  transition: all 200ms ease;
   
   &:hover,
   focus {
@@ -77,7 +77,6 @@ export const Link = styled.a`
   
   &:hover,
   focus {
-    background: rgba(0,0,0,0);
 	  color: #3a7999;
 	  color: inset 0 0 0 3px #3a7999;
   }
@@ -97,7 +96,6 @@ export const ForgotLink = styled.a`
   
   &:hover,
   focus {
-    background: rgba(0,0,0,0);
 	  color: #3a7999;
 	  color: inset 0 0 0 3px #3a7999;
   }

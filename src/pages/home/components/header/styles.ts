@@ -21,7 +21,6 @@ export const Logo = styled.a`
   
   &:hover,
   focus {
-    background: rgba(0,0,0,0);
 	  color: #3a7999;
 	  color: inset 0 0 0 3px #3a7999;
 `
@@ -65,7 +64,7 @@ export const LogOutBtn = styled.button`
   background: #172234;
   margin-right: 10px;
   cursor: pointer;
-  transition: box-shadow 200ms ease;
+  transition: all 200ms ease;
   
   &:hover,
   focus {
@@ -86,7 +85,7 @@ export const SignUpLink = styled.a`
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  transition: box-shadow 200ms ease;
+  transition: all 200ms ease;
   
   &:hover,
   focus {

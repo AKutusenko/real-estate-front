@@ -1,11 +1,18 @@
 import React from 'react';
 import { Wrapper, Title, Mission, HeroBtn } from './styles';
+import { useNavigate } from 'react-router';
+import { useAuth } from 'hooks/useAuth';
 
 export default function Hero(): JSX.Element {
+  const navigate = useNavigate();
+  const isAuth = useAuth();
+
   function handleClick() {
-    setTimeout(() => {
-      window.scrollBy(0, 1050);
-    }, 100);
+    !isAuth
+      ? navigate('/signin')
+      : setTimeout(() => {
+          window.scrollBy(0, 1050);
+        }, 100);
   }
 
   return (

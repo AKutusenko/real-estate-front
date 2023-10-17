@@ -13,6 +13,9 @@ import {
 import { AuthService } from 'services/auth.service';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { setTokenToLocalStorage } from 'helpers/localstorage.helper';
+import { useAppDispatch } from 'store/hooks';
+import { signIn } from 'store/user/userSlice';
 
 export default function Form(): JSX.Element {
   const [firstName, setFirstName] = useState<string>('');
@@ -21,6 +24,7 @@ export default function Form(): JSX.Element {
   const [password, setPassword] = useState<string>('');
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
@@ -32,7 +36,12 @@ export default function Form(): JSX.Element {
         password,
       });
       resetState();
-      if (data) toast.success('Account has been created!');
+      if (data) {
+        toast.success('Account has been created!');
+        setTokenToLocalStorage('token', data.token);
+        dispatch(signIn(data));
+      }
+
       navigate('/');
     } catch (err: any) {
       const error = err.response?.data.message;
