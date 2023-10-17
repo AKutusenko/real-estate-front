@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Title, Wrapper } from './styles';
 import Card from './components/card';
 import { CardTypes } from './components/card/types';
-import { useGetCardsQuery } from 'store/api/cardsApi';
+import { CardService } from 'services/cards.service';
 
 export default function Gallery(): JSX.Element {
-  const dataBackup = [
+  const dataBackUp = [
     {
       id: 1,
       name: 'The Marina Torch',
@@ -47,26 +47,50 @@ export default function Gallery(): JSX.Element {
       sold: '75',
     },
   ];
+  const [cards, setCards] = useState([]);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { data = dataBackup, error, isLoading } = useGetCardsQuery('');
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      const data = await CardService.getAll();
+      setCards(data);
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <Wrapper>
       <Title>Open Deals</Title>
       <Table>
-        {data.map((el: CardTypes) => (
-          <Card
-            key={el.id}
-            name={el.name}
-            imageUrl={el.imageUrl}
-            generalPrice={el.generalPrice}
-            oneTicketPrice={el.oneTicketPrice}
-            rate={el.rate}
-            timeLeft={el.timeLeft}
-            sold={el.sold}
-          />
-        ))}
+        {cards.length > 0
+          ? cards.map((el: CardTypes) => (
+              <Card
+                key={el.id}
+                name={el.name}
+                imageUrl={el.imageUrl}
+                generalPrice={el.generalPrice}
+                oneTicketPrice={el.oneTicketPrice}
+                rate={el.rate}
+                timeLeft={el.timeLeft}
+                sold={el.sold}
+              />
+            ))
+          : dataBackUp.map((el: CardTypes) => (
+              <Card
+                key={el.id}
+                name={el.name}
+                imageUrl={el.imageUrl}
+                generalPrice={el.generalPrice}
+                oneTicketPrice={el.oneTicketPrice}
+                rate={el.rate}
+                timeLeft={el.timeLeft}
+                sold={el.sold}
+              />
+            ))}
       </Table>
     </Wrapper>
   );

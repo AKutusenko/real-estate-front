@@ -2,6 +2,6 @@ import styled from "styled-components";
 
 export const HeaderItem = styled.header`
   height: 80px;
-  width: 100%;
+  width: 1440px;
   background: #172234;
 `

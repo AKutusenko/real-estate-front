@@ -10,16 +10,42 @@ import {
   LinkWrapper,
   Text,
 } from './styles';
-import { useSignUpMutation } from 'store/api/authApi';
+import { AuthService } from 'services/auth.service';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 export default function Form(): JSX.Element {
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [signUp, { data, isLoading, isSuccess, isError, error }] =
-    useSignUpMutation();
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
+      const data = await AuthService.signUp({
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+      resetState();
+      if (data) toast.success('Account has been created!');
+      navigate('/');
+    } catch (err: any) {
+      const error = err.response?.data.message;
+      toast.error(error.toString());
+    }
+  };
+
+  function resetState() {
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setPassword('');
+  }
 
   const handleChange = (e: any) => {
     const { name, value } = e.currentTarget;
@@ -41,19 +67,6 @@ export default function Form(): JSX.Element {
       default:
         return;
     }
-  };
-
-  async function sendUserData() {
-    await signUp({ firstName, lastName, email, password });
-  }
-
-  const handleSubmit = (e: React.FormEvent<EventTarget>): void => {
-    e.preventDefault();
-    sendUserData();
-    setFirstName('');
-    setLastName('');
-    setEmail('');
-    setPassword('');
   };
 
   return (

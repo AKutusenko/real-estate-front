@@ -11,14 +11,44 @@ import {
   Text,
   ForgotLink,
 } from './styles';
-import { useSignInMutation } from 'store/api/authApi';
+import { useNavigate } from 'react-router';
+import { AuthService } from 'services/auth.service';
+import { toast } from 'react-toastify';
+import { setTokenToLocalStorage } from 'helpers/localstorage.helper';
+import { useAppDispatch } from 'store/hooks';
+import { signIn } from 'store/user/userSlice';
 
 export default function Form(): JSX.Element {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [signIn, { data, isLoading, isSuccess, isError, error }] =
-    useSignInMutation();
+  const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
+      const data = await AuthService.signIn({
+        email,
+        password,
+      });
+      resetState();
+      if (data) {
+        toast.success('You have logged in!');
+        setTokenToLocalStorage('token', data.token);
+        dispatch(signIn(data));
+      }
+      navigate('/');
+    } catch (err: any) {
+      const error = err.response?.data.message;
+      toast.error(error.toString());
+    }
+  };
+
+  function resetState() {
+    setEmail('');
+    setPassword('');
+  }
 
   const handleChange = (e: any) => {
     const { name, value } = e.currentTarget;
@@ -34,17 +64,6 @@ export default function Form(): JSX.Element {
       default:
         return;
     }
-  };
-
-  async function sendUserData() {
-    await signIn({ email, password });
-  }
-
-  const handleSubmit = (e: React.FormEvent<EventTarget>): void => {
-    e.preventDefault();
-    sendUserData();
-    setEmail('');
-    setPassword('');
   };
 
   return (
