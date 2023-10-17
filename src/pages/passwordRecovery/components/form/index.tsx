@@ -18,7 +18,7 @@ export default function Form(): JSX.Element {
   const [email, setEmail] = useState<string>('');
   const navigate = useNavigate();
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     switch (name) {
       case 'email':
@@ -37,7 +37,7 @@ export default function Form(): JSX.Element {
         email,
       });
       setEmail('');
-      if (data) toast.success('Check your mail!');
+      toast.success('Check your mail!');
       navigate('/');
     } catch (err: any) {
       const error = err.response?.data.message;

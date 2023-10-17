@@ -50,7 +50,7 @@ export default function Form(): JSX.Element {
     setPassword('');
   }
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
 
     switch (name) {

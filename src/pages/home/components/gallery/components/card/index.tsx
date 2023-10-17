@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardItem, CardText, CardTitle, Image, TextWrapper } from './styles';
-import { CardTypes } from './types';
+import { CardTypes } from 'types';
 
 export default function Card({
   name,

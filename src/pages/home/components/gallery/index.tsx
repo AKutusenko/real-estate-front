@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Title, Wrapper } from './styles';
 import Card from './components/card';
-import { CardTypes } from './components/card/types';
+import { CardTypes } from 'types';
 import { CardService } from 'services/cards.service';
 
 export default function Gallery(): JSX.Element {

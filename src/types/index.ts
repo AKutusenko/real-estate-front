@@ -36,6 +36,22 @@ export interface ICard {
     updatedAt: string,
 }
 
-export interface IpasswordRecoeryData {
+export interface IPasswordRecoveryData {
     email: string;
+}
+
+export interface IPasswordUpdateData {
+    email: string | null;
+    password: string;
+}
+
+export interface CardTypes {
+    name: string;
+    id?: number;
+    imageUrl: string;
+    generalPrice: string;
+    oneTicketPrice: string;
+    rate: string;
+    timeLeft: string;
+    sold: string;
 }
