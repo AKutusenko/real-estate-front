@@ -33,7 +33,7 @@ export default function Form(): JSX.Element {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      const data = await PasswordRecoveryService.recovery({
+      await PasswordRecoveryService.recovery({
         email,
       });
       setEmail('');
